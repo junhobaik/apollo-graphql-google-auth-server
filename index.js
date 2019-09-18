@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'development') {
   serverUrl = 'http://localhost:4000';
   localeUrl = 'http://localhost:3000';
 } else {
-  serverUrl = process.env.AWS_PUBLIC_DNS;
+  serverUrl = `${process.env.AWS_PUBLIC_DNS}:4000`;
   localeUrl = 'http://localhost:3000'; // 차후 수정
 }
 console.log('> serverUrl: ', serverUrl);
