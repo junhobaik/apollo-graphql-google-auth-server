@@ -33,7 +33,8 @@ const server = new ApolloServer({
   context: ({ req }) => {
     if (req.user) console.log(req.user);
     return { userModel };
-  }
+  },
+  playground: true
 });
 
 app.use(session);
