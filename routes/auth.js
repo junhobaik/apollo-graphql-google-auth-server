@@ -18,7 +18,7 @@ auth.get(
   '/google/callback',
   passport.authenticate('google', { failureRedirect: clientPath }),
   (req, res) => {
-    const { id, displayName } = req.user.profile;
+    const { id, displayName } = req.user;
 
     userModel.findOne({ name: displayName }, (err, userData) => {
       if (err) return new Error(err);
