@@ -5,6 +5,7 @@ import cors from 'cors';
 import typeDefs from './schema';
 import resolvers from './resolvers';
 import session from './lib/session';
+import { userModel } from './models';
 
 const app = express();
 require('dotenv').config();
@@ -31,7 +32,7 @@ const server = new ApolloServer({
   resolvers,
   context: ({ req }) => {
     if (req.user) console.log(req.user);
-    return null;
+    return { userModel };
   }
 });
 
