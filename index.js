@@ -2,12 +2,16 @@ import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
 import passport from 'passport';
+import morgan from 'morgan';
 
 import typeDefs from './schema';
 import resolvers from './resolvers';
 import session from './lib/session';
 import { userModel } from './models';
 import passportInit from './lib/passport';
+
+import api from './routes/api';
+import auth from './routes/auth';
 
 require('dotenv').config();
 const app = express();
@@ -42,6 +46,7 @@ const server = new ApolloServer({
 });
 
 app.use(cors(corsOptions));
+app.use(morgan('dev'));
 
 // passport setup
 passportInit(passport);
@@ -49,6 +54,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(session);
+
+app.use('/api', api);
+app.use('/auth', auth);
 
 server.applyMiddleware({ app, cors: false });
 
