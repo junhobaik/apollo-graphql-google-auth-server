@@ -34,6 +34,7 @@ const server = new ApolloServer({
     if (req.user) console.log(req.user);
     return { userModel };
   },
+  introspection: true,
   playground: true
 });
 
