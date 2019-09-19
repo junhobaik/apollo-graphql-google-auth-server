@@ -3,6 +3,8 @@ import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
 import passport from 'passport';
 import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 import typeDefs from './schema';
 import resolvers from './resolvers';
@@ -45,8 +47,11 @@ const server = new ApolloServer({
   playground: true
 });
 
-app.use(cors(corsOptions));
 app.use(morgan('dev'));
+app.use(cors(corsOptions));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use(session);
 // passport setup
