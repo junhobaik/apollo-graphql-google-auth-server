@@ -39,7 +39,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => {
-    console.log('ApolloServer req.session:', req.session);
+    // console.log('ApolloServer req.session:', req.session);
     if (req.user) console.log(req.user);
     return { req, userModel };
   },
