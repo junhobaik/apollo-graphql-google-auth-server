@@ -3,10 +3,10 @@ const api = express.Router();
 
 const isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
-    console.log('> isAuthenticated: ', true);
+    console.log('> isAuthenticated: ', true, 'req.user: ', req.user);
     return next();
   }
-  console.log('> isAuthenticated: ', false);
+  console.log('> isAuthenticated: ', false, 'req.user: ', req.user);
   res.sendStatus(401);
 };
 
