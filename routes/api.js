@@ -21,7 +21,7 @@ api.get('/account', isAuthenticated, (req, res, next) => {
 
 api.get('/', (req, res) => {
   console.log('/api, req.session: ', req.session);
-  console.log('/api, req.sessionStore: ', req.sessionStore);
+  console.log('/api, req.sessionStore: ', req.sessionStore.user);
   res.sendStatus(200);
 });
 
