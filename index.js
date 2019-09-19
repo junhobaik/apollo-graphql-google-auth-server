@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'development') {
   localeUrl = 'http://localhost:3000';
 } else {
   serverUrl = `${process.env.AWS_PUBLIC_DNS}:4000`;
-  localeUrl = 'http://localhost:3000'; // 차후 배포된 프론트 페이지 url로 수정
+  localeUrl = `${process.env.AWS_PUBLIC_DNS}/apollo-graphql-google-auth`; // 차후 배포된 프론트 페이지 url로 수정
 }
 console.log('> serverUrl: ', serverUrl);
 console.log('> localeUrl: ', localeUrl);
@@ -55,6 +55,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(session);
+
 // passport setup
 passportInit(passport);
 app.use(passport.initialize());
