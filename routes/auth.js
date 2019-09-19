@@ -6,7 +6,9 @@ const auth = express.Router();
 
 import { userModel } from '../models';
 
-const clientPath = 'http://localhost:3000';
+// const clientPath = 'http://localhost:3000';
+const clientPath = 'http://ec2-54-180-95-94.ap-northeast-2.compute.amazonaws.com:3000/';
+
 
 auth.get(
   '/google',
