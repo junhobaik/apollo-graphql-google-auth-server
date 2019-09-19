@@ -41,7 +41,7 @@ const server = new ApolloServer({
   context: ({ req }) => {
     console.log('ApolloServer req.session:', req.session);
     if (req.user) console.log(req.user);
-    return { userModel };
+    return { req, userModel };
   },
   // 아래 두 옵션은 production에서도 playground를 사용하기 위한 옵션.
   introspection: true,
