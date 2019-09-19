@@ -48,12 +48,11 @@ const server = new ApolloServer({
 app.use(cors(corsOptions));
 app.use(morgan('dev'));
 
+app.use(session);
 // passport setup
 passportInit(passport);
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use(session);
 
 app.use('/api', api);
 app.use('/auth', auth);
