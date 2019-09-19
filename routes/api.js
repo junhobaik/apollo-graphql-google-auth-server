@@ -20,7 +20,7 @@ api.get('/account', isAuthenticated, (req, res, next) => {
 });
 
 api.get('/', (req, res) => {
-  console.log('/api');
+  console.log('/api, req.session: ', req.session);
   res.sendStatus(200);
 });
 
