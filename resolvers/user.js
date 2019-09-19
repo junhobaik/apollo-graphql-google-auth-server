@@ -1,6 +1,8 @@
 export default {
   Query: {
-    users: async (parent, args, { userModel }) => {
+    users: async (parent, args, { userModel, req }) => {
+      console.log(Object.keys(req));
+      console.log(req.user);
       return await userModel.find({}, (err, users) => users);
     },
 
