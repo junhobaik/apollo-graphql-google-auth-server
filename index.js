@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'development') {
   localeUrl = 'http://localhost:3000';
 } else {
   serverUrl = `${process.env.AWS_PUBLIC_DNS}:4000`;
-  localeUrl = `${process.env.AWS_PUBLIC_DNS}/apollo-graphql-google-auth`; // 차후 배포된 프론트 페이지 url로 수정
+  localeUrl = `${process.env.AWS_PUBLIC_DNS}:5000`; // 차후 배포된 프론트 페이지 url로 수정
 }
 console.log('> serverUrl: ', serverUrl);
 console.log('> localeUrl: ', localeUrl);
@@ -45,7 +45,9 @@ const server = new ApolloServer({
   },
   // 아래 두 옵션은 production에서도 playground를 사용하기 위한 옵션.
   introspection: true,
-  playground: true
+  playground: {
+    settings: { 'request.credentials': 'include' }
+  }
 });
 
 app.use(morgan('dev'));
